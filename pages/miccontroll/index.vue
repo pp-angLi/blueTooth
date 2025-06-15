@@ -17,6 +17,8 @@
 			</view>
 		</view>
 		
+		<MicrophoneChart class="eq_box" />
+		
 		<PlayerVue class="play_box"  sliderId="sliderIdMIC" titlename="MIC" :showButton="false"/>
 		<up-toast ref="uToastRef"></up-toast>
 	</view>

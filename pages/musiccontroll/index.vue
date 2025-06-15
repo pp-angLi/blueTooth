@@ -8,7 +8,9 @@
 			</view>
 		</view>
 		
-		<view class="eq_box">
+		<MusicChart class="eq_box" />
+		
+<!-- 		<view class="eq_box">
 			<Title title="MUSIC EQ"/>
 			<view class="eq_padding">
 			<view>
@@ -24,7 +26,7 @@
 				<slider value="50" @changing="sliderChange" block-size="20" block-color=" #3c9cff" show-value />
 			</view>
 			</view>
-		</view>
+		</view> -->
 		
 		
 		<PlayerVue class="play_box" word="VOL" sliderId="sliderIdMUISC" titlename="MUSIC"/>

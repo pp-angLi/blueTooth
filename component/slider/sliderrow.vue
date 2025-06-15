@@ -49,10 +49,9 @@
 		right: 0,
 		height: 0
 	})
-	onMounted(async () => {
-		await nextTick()
+	const setDom = (sliderId) => {
 		const query = uni.createSelectorQuery().in(this)
-		const qSliderId = `#${props.sliderId}`
+		const qSliderId = `#${sliderId}`
 		query.select(qSliderId).boundingClientRect(rect => {
 			if (rect) {
 				dom.left = rect.left
@@ -60,6 +59,10 @@
 				dom.width = rect.width
 			}
 		}).exec();
+	}
+	onMounted(async () => {
+		await nextTick()
+		setDom(props.sliderId)
 	})
 	const left = ref("0%")
 	const computPropsValue = (val) => {

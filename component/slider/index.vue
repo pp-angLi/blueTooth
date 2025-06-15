@@ -8,7 +8,7 @@
 		<view class="slider_circul" :class="disabled ? 'slider_dis' : ''" :style="{
 			top
 		}">
-<!-- 			<text class="number">
+			<!-- 			<text class="number">
 				{{ value + min }}
 			</text> -->
 		</view>
@@ -21,7 +21,8 @@
 		onMounted,
 		reactive,
 		markRaw,
-		ref
+		ref,
+		watch
 	} from 'vue';
 
 	import {
@@ -53,19 +54,20 @@
 		top: 0,
 		height: 0
 	})
+	const setDom = (sliderId) => {
+		const query = uni.createSelectorQuery().in(this)
+		query.select(`#${sliderId}`).boundingClientRect(rect => {
+			if (rect) {
+				dom.top = rect.top
+				dom.height = rect.height
+			}
+		}).exec();
+	}
 	onMounted(async () => {
 		await nextTick()
-		const query = uni.createSelectorQuery().in(this)
-		setTimeout(() => {
-			query.select(`#${props.sliderId}`).boundingClientRect(rect => {
-				if (rect) {
-					dom.top = rect.top
-					dom.height = rect.height
-				}
-			}).exec();
-			console.log(dom)
-		}, 2000)
+		setDom(props.sliderId)
 	})
+
 	let computeTopPecent = 0
 	if (props.value === 0 || props.value) {
 		let computeTop = props.value
@@ -108,7 +110,9 @@
 		const value = comPosition(pageY)
 		const nowLeft = extractPercentToDecimal(top.value)
 		const dif = value - nowLeft
-		if (value - nowLeft > 10 || value - nowLeft < -10) {
+		const round = Math.round(props.max / 10)
+		console.log(round, dif, dom)
+		if (value - nowLeft > round || value - nowLeft < -round) {
 			canMove = false
 		} else {
 			canMove = true
@@ -119,10 +123,10 @@
 		const {
 			pageY
 		} = e.touches[0]
-		// if (canMove) {
-		// 	moveHandler(comPosition(pageY))
-		// }
-		moveHandler(comPosition(pageY))
+		if (canMove) {
+			moveHandler(comPosition(pageY))
+		}
+		// moveHandler(comPosition(pageY))
 	}
 </script>
 

@@ -6,14 +6,14 @@
 				activeColor="#3c9cff"></up-subsection>
 			<up-line color="#3c9cff"></up-line>
 		</up-sticky>
-		<view class="component_box">
-			<view class="component" v-show="activeIndex === 0">
+		<view class="component_box" v-if="!loading">
+			<view class="component" v-if="activeIndex === 0">
 				<MusicControll />
 			</view>
-			<view class="component" v-show="activeIndex === 1">
+			<view class="component" v-if="activeIndex === 1">
 				<MicControll />
 			</view>
-			<view class="component" v-show="activeIndex === 2">
+			<view class="component" v-if="activeIndex === 2">
 				<EffectControll />
 			</view>
 		</view>

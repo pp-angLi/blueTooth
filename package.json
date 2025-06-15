@@ -1,0 +1,17 @@
+{
+	"devDependencies": {
+		"sass": "^1.63.2",
+		"sass-loader": "^10.4.1"
+	},
+	"dependencies": {
+		"@qiun/ucharts": "^2.5.0-20230101",
+		"@qiun/vue-ucharts": "^2.5.0-20230101",
+		"pinia": "^3.0.3",
+		"uview-plus": "^3.4.40"
+	},
+	"globalStyle": {
+		"app-plus": {
+			"bounce": "none"
+		}
+	}
+}

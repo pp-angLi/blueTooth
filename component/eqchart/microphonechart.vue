@@ -11,7 +11,7 @@
 				<view class="word margin_b">{{ slider.value }}</view>
 				<view class="slider">
 					<SliderVue :disabled="slider.disabled" :value="slider.value" :sliderId="slider.sliderId"
-						:onSliderChange="onSliderChange" />
+						:onSliderChange="onSliderChange" :switchOpen="switchOpen" />
 				</view>
 				<view class="word">{{ slider.name }}</view>
 			</view>
@@ -30,9 +30,16 @@
 		onMounted,
 		reactive,
 		markRaw,
-		ref
+		ref,
+		watch,
 	} from 'vue';
 
+	const props = defineProps({
+		switchOpen: {
+			type: Boolean,
+			default: true
+		},
+	})
 
 	const components = reactive([
 		markRaw(SliderVue),

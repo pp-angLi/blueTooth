@@ -47,6 +47,10 @@
 		onSliderChange: {
 			type: Function,
 			default: () => {}
+		},
+		switchOpen: {
+			type: Boolean,
+			default: () => false
 		}
 	})
 
@@ -111,7 +115,6 @@
 		const nowLeft = extractPercentToDecimal(top.value)
 		const dif = value - nowLeft
 		const round = Math.round(props.max / 10)
-		console.log(round, dif, dom)
 		if (value - nowLeft > round || value - nowLeft < -round) {
 			canMove = false
 		} else {
@@ -128,6 +131,10 @@
 		}
 		// moveHandler(comPosition(pageY))
 	}
+	
+	watch(() => props.switchOpen, () => {
+		setDom(props.sliderId)
+	})
 </script>
 
 <style lang="scss" scoped>

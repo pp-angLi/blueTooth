@@ -15,13 +15,21 @@ export function createApp() {
 				// 修改config对象的属性
 				config: {
 					// 默认字体图标自托管资源地址
-					iconUrl: 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
+					// iconUrl: 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
 				}
 			}
 		}
 	})
 	const pinia = Pinia.createPinia()
 	app.use(pinia)
+
+	app.config.globalProperties.$translate = (key) => {
+		const translations = {
+			hello: '你好',
+			goodbye: '再见'
+		};
+		return translations[key] || key;
+	};
 	return {
 		app,
 		Pinia

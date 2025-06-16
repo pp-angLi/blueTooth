@@ -177,12 +177,14 @@
 <style lang="scss" scoped>
 	.play_box {
 		width: 100%;
+		padding: 20rpx;
+		box-sizing: border-box;
 
 		.slider_box {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			padding: 20rpx 40rpx;
+			padding: 20rpx 0;
 			box-sizing: border-box;
 
 			.word {
@@ -212,7 +214,6 @@
 			width: 100%;
 			display: flex;
 			flex-direction: row;
-			padding: 20rpx;
 			box-sizing: border-box;
 
 			.button {

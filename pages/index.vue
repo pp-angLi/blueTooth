@@ -1,12 +1,13 @@
 <template>
 	<view class="home">
-		<up-loading-page :loading="loading"></up-loading-page>
-		<up-sticky bgColor="#fff" v-if="!loading">
+		<!-- <up-loading-page :loading="loading"></up-loading-page> -->
+		<up-sticky bgColor="#fff">
 			<up-subsection :list="tabList" :current="activeIndex" @change="handleTabChange" bgColor="#fff"
 				activeColor="#3c9cff"></up-subsection>
 			<up-line color="#3c9cff"></up-line>
 		</up-sticky>
-		<view class="component_box" v-if="!loading">
+		<!-- <view class="component_box" v-if="!loading"> -->
+		<view class="component_box">
 			<view class="component" v-if="activeIndex === 0">
 				<MusicControll />
 			</view>

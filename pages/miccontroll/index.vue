@@ -123,15 +123,15 @@
 				text-align: center;
 			}
 		}
-
+	
 		.eq_model {
 			margin-bottom: 20rpx;
 			padding: 20rpx;
 			border-radius: 30rpx;
 			background-color: #fff;
 		}
-
-
+	
+	
 		.eq_box {
 			padding: 20rpx;
 			border-radius: 30rpx;

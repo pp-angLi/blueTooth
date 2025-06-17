@@ -36,13 +36,17 @@
 		margin: 0;
 		padding: 0;
 	}
-	body {
-		overflow: hidden;
-	}
 
 	.example-info {
 		font-size: 14px;
 		color: #333;
 		padding: 10px;
+	}
+
+	.eq_model {
+		margin-bottom: 20rpx;
+		padding: 20rpx;
+		border-radius: 30rpx;
+		background-color: #fff;
 	}
 </style>

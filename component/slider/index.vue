@@ -1,5 +1,5 @@
 <template>
-	<view class="slider" @touchstart.stop.prevent="touchStartHandler" @touchmove.stop.prevent="touchMoveHandler"
+	<view class="slider_com" @touchstart.stop.prevent="touchStartHandler" @touchmove.stop.prevent="touchMoveHandler"
 		:id="sliderId">
 		<view class="slider_line"></view>
 		<view class="slider_line slider_background" :style="{
@@ -67,6 +67,7 @@
 			}
 		}).exec();
 	}
+
 	onMounted(async () => {
 		await nextTick()
 		setDom(props.sliderId)
@@ -108,6 +109,7 @@
 	// 拖拉开始时间
 	let canMove = false
 	const touchStartHandler = (e) => {
+		setDom(props.sliderId)
 		const {
 			pageY
 		} = e.touches[0]
@@ -115,11 +117,12 @@
 		const nowLeft = extractPercentToDecimal(top.value)
 		const dif = value - nowLeft
 		const round = Math.round(props.max / 10)
-		if (value - nowLeft > round || value - nowLeft < -round) {
+		if (dif > round || dif < -round) {
 			canMove = false
 		} else {
 			canMove = true
 		}
+		console.log(canMove, pageY, dom)
 	}
 
 	const touchMoveHandler = (e) => {
@@ -129,7 +132,6 @@
 		if (canMove) {
 			moveHandler(comPosition(pageY))
 		}
-		// moveHandler(comPosition(pageY))
 	}
 	
 	watch(() => props.switchOpen, () => {
@@ -138,7 +140,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.slider {
+	.slider_com {
 		position: relative;
 		height: 100%;
 

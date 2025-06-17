@@ -7,10 +7,10 @@
 					activeColor="#3c9cff" mode="subsection"></up-subsection>
 			</view>
 		</view>
-		
+
 		<MusicChart class="eq_box" />
-		
-<!-- 		<view class="eq_box">
+
+		<!-- 		<view class="eq_box">
 			<Title title="MUSIC EQ"/>
 			<view class="eq_padding">
 			<view>
@@ -27,20 +27,20 @@
 			</view>
 			</view>
 		</view> -->
-		
-		
-		<PlayerVue class="play_box" word="VOL" sliderId="sliderIdMUISC" titlename="MUSIC"/>
-		
+
+
+		<PlayerVue class="play_box" word="VOL" sliderId="sliderIdMUISC" titlename="MUSIC" />
+
 		<view class="common_box">
-			<Title title="COMMON FUNC"/>
+			<Title title="COMMON FUNC" />
 			<view class="title-padding button-container">
 				<view class="button-group">
-					<button  type="default" size="mini">INPUT</button>
-					<button  type="default" size="mini">MUTE</button>
+					<button type="default" size="mini">INPUT</button>
+					<button type="default" size="mini">MUTE</button>
 				</view>
 			</view>
 		</view>
-		
+
 		<up-toast ref="uToastRef"></up-toast>
 	</view>
 </template>
@@ -101,7 +101,6 @@
 		activeIndex.value = index;
 		// sendMessage写在这里
 	};
-
 </script>
 
 <style lang="scss" scoped>
@@ -129,14 +128,6 @@
 			}
 		}
 
-		.eq_model {
-			margin-bottom: 20rpx;
-			padding: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-		}
-
-
 		.eq_box {
 			padding: 20rpx;
 			border-radius: 30rpx;
@@ -149,7 +140,7 @@
 			border-radius: 30rpx;
 			background-color: #fff;
 		}
-		
+
 		.word {
 			display: inline-block;
 			padding-right: 30rpx;
@@ -157,31 +148,36 @@
 			font-size: 24rpx;
 			color: #9c9c9c;
 		}
-		
-		.eq_padding{
+
+		.eq_padding {
 			padding-top: 50rpx;
 		}
-		
-		.common_box{
+
+		.common_box {
 			margin-top: 20rpx;
+			padding: 20rpx 0 0 20rpx;
 			border-radius: 30rpx;
 			background-color: #fff;
+			box-sizing: border-box;
 		}
-		
-		.title-padding{
+
+		.title-padding {
 			padding-top: 20rpx;
 			padding-bottom: 20rpx;
 		}
-		
-		.button-container{
+
+		.button-container {
 			display: flex;
-			justify-content: center; /* 水平居中 */
-			align-items: center;    /* 垂直居中 */
+			justify-content: center;
+			/* 水平居中 */
+			align-items: center;
+			/* 垂直居中 */
 		}
-		
+
 		.button-group {
-		  display: flex;
-		  gap: 20px; /* 按钮间距 */
+			display: flex;
+			gap: 20px;
+			/* 按钮间距 */
 		}
 	}
 </style>

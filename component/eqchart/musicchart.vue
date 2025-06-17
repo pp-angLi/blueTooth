@@ -45,7 +45,6 @@
 	const onSliderChange = (val, sliderId) => {
 		const i = sliderList.findIndex(slider => slider.name === sliderId)
 		sliderList[i].value = val
-		console.log(val)
 	}
 
 	const sliderList = reactive([{

@@ -1,0 +1,29 @@
+.ctrol_box {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	
+	.eq_model {
+		margin-bottom: 20rpx;
+		padding: 20rpx;
+		border-radius: 30rpx;
+		background-color: #fff;
+		box-sizing: border-box;
+	}
+
+	.eq_box {
+		padding: 20rpx;
+		border-radius: 30rpx;
+		background-color: #fff;
+		flex: 1;
+		box-sizing: border-box;
+	}
+
+	.play_box {
+		margin-top: 20rpx;
+		border-radius: 30rpx;
+		background-color: #fff;
+	}
+}

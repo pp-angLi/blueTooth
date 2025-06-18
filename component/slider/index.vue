@@ -116,13 +116,13 @@
 		const value = comPosition(pageY)
 		const nowLeft = extractPercentToDecimal(top.value)
 		const dif = value - nowLeft
-		const round = Math.round(props.max / 10)
+		let round = Math.round(props.max / 5)
+		round = round > 10 ? 10 : round
 		if (dif > round || dif < -round) {
 			canMove = false
 		} else {
 			canMove = true
 		}
-		console.log(canMove, pageY, dom)
 	}
 
 	const touchMoveHandler = (e) => {
@@ -133,7 +133,7 @@
 			moveHandler(comPosition(pageY))
 		}
 	}
-	
+
 	watch(() => props.switchOpen, () => {
 		setDom(props.sliderId)
 	})

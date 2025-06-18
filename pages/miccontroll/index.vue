@@ -1,32 +1,36 @@
 <template>
-	<view class="box">
+	<view class="ctrol_box">
 		<view class="eq_model">
-			<Title title="PRIORITY" />
-			<view class="padding_tb">
-				<up-subsection :list="dodgeList.tabList" :current="dodgeList.activeIndex" @change="dodgeList.tabChange"
-					bgColor="#f5f5f5" activeColor="#3c9cff" mode="subsection"></up-subsection>
-			</view>
-		</view>
-		<view class="eq_model">
-			<Title title="FBX" :ifSwitch="true">
+			<Title :title="$translate('PRIORITY')">
 				<template #switch>
-					<up-switch v-model="switchOpen" activeColor="#5ac725" inactiveColor="#f56c6c"
-						size="15">
+					<up-switch v-model="switchOpen" activeColor="#5ac725" inactiveColor="#f56c6c" size="15">
 					</up-switch>
 				</template>
 			</Title>
-			<view class="padding_tb">
+			<!-- 			<view class="padding_tb">
+				<up-subsection :list="dodgeList.tabList" :current="dodgeList.activeIndex" @change="dodgeList.tabChange"
+					bgColor="#f5f5f5" activeColor="#3c9cff" mode="subsection"></up-subsection>
+			</view> -->
+		</view>
+		<view class="eq_model">
+			<Title :title="$translate('FBX')">
+				<template #switch>
+					<up-switch v-model="switchOpenFBX" activeColor="#5ac725" inactiveColor="#f56c6c" size="15">
+					</up-switch>
+				</template>
+			</Title>
+			<view class="padding_tb" v-if="switchOpenFBX">
 				<!-- 				<up-subsection :list="fbxList.tabList" :current="fbxList.activeIndex" @change="fbxList.tabChange"
 					bgColor="#f5f5f5" activeColor="#3c9cff" mode="subsection"></up-subsection> -->
-				<up-subsection class="fbx-margin" :list="howlingProofList.tabList" v-if="switchOpen"
+				<up-subsection class="fbx_margin" :list="howlingProofList.tabList"
 					:current="howlingProofList.activeIndex" @change="howlingProofList.tabChange" bgColor="#f5f5f5"
 					activeColor="#3c9cff" mode="subsection"></up-subsection>
 			</view>
 		</view>
 
-		<MicrophoneChart class="eq_box" :switchOpen="switchOpen" />
+		<MicrophoneChart class="eq_box" :switchOpenFBX="switchOpenFBX" />
 
-		<PlayerVue class="play_box" sliderId="sliderIdMIC" titlename="MIC" :showButton="false" />
+		<PlayerVue class="play_box" sliderId="sliderIdMIC" :showButton="false" />
 		<up-toast ref="uToastRef"></up-toast>
 	</view>
 </template>
@@ -40,7 +44,8 @@
 		reactive,
 		watch,
 		markRaw,
-		provide
+		provide,
+		getCurrentInstance
 	} from 'vue'
 	import {
 		onLoad
@@ -51,6 +56,9 @@
 	import {
 		storeToRefs
 	} from 'pinia'
+
+	const instance = getCurrentInstance()
+	const $translate = instance.appContext.config.globalProperties.$translate;
 
 	const components = reactive([
 		markRaw(PlayerVue),
@@ -95,95 +103,26 @@
 			howlingProofList.activeIndex = index;
 		}
 	}))
-	
+
 	const switchOpen = ref(false)
+	const switchOpenFBX = ref(false)
 </script>
 
 <style lang="scss" scoped>
-	.box {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		width: 100%;
-		box-sizing: border-box;
+	@import "@/static/scss/controll.scss";
 
-		.padding_tb {
-			padding: 20rpx 0;
-		}
+	.padding_tb {
+		padding: 20rpx 0;
+	}
 
-		.number_box {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
+	.eq_model {
+		margin-bottom: 20rpx;
+		padding: 20rpx;
+		border-radius: 30rpx;
+		background-color: #fff;
+	}
 
-			.word {
-				padding-top: 20rpx;
-				border-radius: 30rpx;
-				font-size: 24rpx;
-				text-align: center;
-			}
-		}
-	
-		.eq_model {
-			margin-bottom: 20rpx;
-			padding: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-		}
-	
-	
-		.eq_box {
-			padding: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-			flex: 1;
-		}
-
-		.play_box {
-			margin-top: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-		}
-
-		.word {
-			display: inline-block;
-			padding-right: 30rpx;
-			text-align: center;
-			font-size: 24rpx;
-			color: #9c9c9c;
-		}
-
-		.eq_padding {
-			padding-top: 50rpx;
-		}
-
-		.common_box {
-			margin-top: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-		}
-
-		.title-padding {
-			padding-top: 20rpx;
-			padding-bottom: 20rpx;
-		}
-
-		.button-container {
-			display: flex;
-			justify-content: center;
-			/* 水平居中 */
-			align-items: center;
-			/* 垂直居中 */
-		}
-
-		.button-group {
-			display: flex;
-			gap: 20rpx;
-			/* 按钮间距 */
-		}
-
-		.fbx-margin {
-			margin-top: 20rpx;
-		}
+	.fbx_margin {
+		margin-top: 20rpx;
 	}
 </style>

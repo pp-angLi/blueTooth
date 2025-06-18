@@ -1,8 +1,8 @@
 <template>
 	<view class="play_box">
-		<Title :title="titlename"/>
+		<Title v-if="titlename" :title="titlename" class="title" />
 		<view class="slider_box">
-			<text class="word" v-if="word">{{ word }} </text>
+			<text class="word" v-if="word">{{ $translate(word) }} </text>
 			<view class="button" v-if="!showButton && showIcon">
 				<up-icon @tap="voiceHandler(-1)" v-show="voice > 50" :name="volume2Png" color="#9c9c9c"
 					size="20"></up-icon>
@@ -48,27 +48,32 @@
 		watch,
 		inject,
 		markRaw,
-		provide
+		provide,
+		getCurrentInstance
 	} from 'vue'
 
 	import {
 		storeToRefs
 	} from 'pinia'
 
-	import circulPng from '@/img/circul.png'
-	import orderPng from '@/img/order.png'
-	import randomPng from '@/img/random.png'
+	import circulPng from '@/static/img/circul.png'
+	import orderPng from '@/static/img/order.png'
+	import randomPng from '@/static/img/random.png'
 
-	import rewindLeftFillPng from '@/img/rewind-left-fill.png'
-	import pauseCircleFillPng from '@/img/pause-circle-fill.png'
-	import playCircleFillPng from '@/img/play-circle-fill.png'
-	import rewindRightFillPng from '@/img/rewind-right-fill.png'
-	import volumeXPng from '@/img/volume-x.png'
-	import volume2Png from '@/img/volume-2.png'
-	import volume1Png from '@/img/volume-1.png'
+	import rewindLeftFillPng from '@/static/img/rewind-left-fill.png'
+	import pauseCircleFillPng from '@/static/img/pause-circle-fill.png'
+	import playCircleFillPng from '@/static/img/play-circle-fill.png'
+	import rewindRightFillPng from '@/static/img/rewind-right-fill.png'
+	import volumeXPng from '@/static/img/volume-x.png'
+	import volume2Png from '@/static/img/volume-2.png'
+	import volume1Png from '@/static/img/volume-1.png'
 	
 	import SliderrowVue from '@/component/slider/sliderrow.vue'
 	import Title from '@/component/title/index.vue'
+	
+	const instance = getCurrentInstance()
+	const $translate = instance.appContext.config.globalProperties.$translate;
+	
 	const components = reactive([
 		markRaw(SliderrowVue)
 	]);
@@ -177,8 +182,12 @@
 <style lang="scss" scoped>
 	.play_box {
 		width: 100%;
-		padding: 20rpx;
+		padding: 0 20rpx;
 		box-sizing: border-box;
+		
+		.title {
+			padding: 20rpx 0;
+		}
 
 		.slider_box {
 			display: flex;

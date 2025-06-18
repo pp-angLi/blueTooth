@@ -1,0 +1,52 @@
+.word {
+	font-size: 24rpx;
+}
+
+.charts {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: calc(100% - 280rpx);
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	.slider_box {
+		flex: 1;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		padding: 10rpx 0;
+
+		.slider_list {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			margin: 0 10rpx;
+
+			.slider {
+				flex: 1;
+				margin-bottom: 10rpx;
+				padding: 40rpx 0;
+				border-radius: 30rpx;
+				background-color: #f3f3f3;
+				box-sizing: border-box;
+			}
+
+			.word {
+				text-align: center;
+				padding: 20rpx 0;
+				border-radius: 30rpx;
+				background-color: #f3f3f3;
+				box-sizing: border-box;
+			}
+
+			.margin_b {
+				margin-bottom: 10rpx;
+			}
+		}
+
+	}
+}

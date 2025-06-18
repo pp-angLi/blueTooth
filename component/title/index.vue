@@ -1,20 +1,25 @@
 <template>
 	<view class="title">
 		<text>
-			{{ title }}
+			{{ $translate(title)}}
 		</text>
 		<slot name="switch"></slot>
 	</view>
 </template>
 
 <script setup name="Title">
-import { ref } from 'vue';
+	import {
+		ref,
+		getCurrentInstance
+	} from 'vue';
 
 	const props = defineProps({
 		title: "",
 	})
-	
+
 	const value11 = ref(false)
+	const instance = getCurrentInstance()
+	const $translate = instance.appContext.config.globalProperties.$translate;
 </script>
 
 <style lang="scss" scoped>

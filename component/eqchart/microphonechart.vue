@@ -1,10 +1,7 @@
 <template>
 	<view class="charts">
 		<view class="charts_top">
-			<Title title="麦克风" />
-			<!-- 			<view class="word_box">
-				<text class="word">100dB</text>
-			</view> -->
+			<Title title="MIC" />
 		</view>
 		<view class="slider_box">
 			<view class="slider_list" v-for="(slider, i) in sliderList" :key="slider.name">
@@ -16,9 +13,6 @@
 				<view class="word">{{ slider.name }}</view>
 			</view>
 		</view>
-		<!-- 		<view class="charts_bottom">
-			<text class="word">0dB</text>
-		</view> -->
 	</view>
 </template>
 
@@ -32,7 +26,11 @@
 		markRaw,
 		ref,
 		watch,
+		getCurrentInstance
 	} from 'vue';
+	
+	const instance = getCurrentInstance()
+	const $translate = instance.appContext.config.globalProperties.$translate;
 
 	const props = defineProps({
 		switchOpen: {
@@ -53,96 +51,20 @@
 	}
 
 	const sliderList = reactive([{
-		name: '低',
+		name: $translate('LOW'),
 		value: 0,
 		sliderId: "low",
 	}, {
-		name: '中',
+		name: $translate('MID'),
 		value: 0,
 		sliderId: "mid",
 	}, {
-		name: '高',
+		name: $translate('HIGH'),
 		value: 0,
 		sliderId: "high",
 	}, ])
 </script>
 
 <style lang="scss" scoped>
-	.charts {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		height: calc(100% - 280rpx);
-		box-sizing: border-box;
-		display: flex;
-		flex-direction: column;
-		overflow: hidden;
-
-		.charts_top {
-			.word_box {
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-
-				.word {
-					width: 20%;
-					text-align: center;
-				}
-			}
-
-		}
-
-		.charts_bottom {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-
-			.word {
-				width: 20%;
-				text-align: center;
-			}
-		}
-
-		.word {
-			font-size: 24rpx;
-		}
-
-		.slider_box {
-			flex: 1;
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			padding: 10rpx 0;
-
-			.slider_list {
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				height: 100%;
-				margin: 0 10rpx;
-
-				.slider {
-					flex: 1;
-					margin-bottom: 10rpx;
-					padding: 40rpx 0;
-					border-radius: 30rpx;
-					background-color: #f3f3f3;
-					box-sizing: border-box;
-				}
-
-				.word {
-					text-align: center;
-					padding: 20rpx 0;
-					border-radius: 30rpx;
-					background-color: #f3f3f3;
-					box-sizing: border-box;
-				}
-
-				.margin_b {
-					margin-bottom: 10rpx;
-				}
-			}
-
-		}
-	}
+	@import "@/static/scss/echartstyle.scss";
 </style>

@@ -7,6 +7,9 @@ import {
 import * as Pinia from 'pinia' // 导入 Pinia 核心库
 
 import App from './App.vue'
+import chinese from '@/translate/chinese.js'
+import english from '@/translate/english.js'
+
 export function createApp() {
 	const app = createSSRApp(App)
 	app.use(uviewPlus, () => {
@@ -24,10 +27,13 @@ export function createApp() {
 	app.use(pinia)
 
 	app.config.globalProperties.$translate = (key) => {
-		const translations = {
-			hello: '你好',
-			goodbye: '再见'
-		};
+		const locale = uni.getStorageSync('locale') || uni.getSystemInfoSync().language;
+		let translations
+		if (locale === "zh-CN" || locale === "zh-Hans") {
+			translations = chinese
+		} else {
+			translations = english
+		}
 		return translations[key] || key;
 	};
 	return {

@@ -1,10 +1,10 @@
 <template>
-	<view class="box" ref="musicControll">
+	<view class="ctrol_box" ref="musicControll">
 		<view class="eq_model">
 			<Title title="EQ MODE" />
 			<view class="padding_tb">
 				<up-subsection :list="tabList" :current="activeIndex" @change="handleTabChange" bgColor="#f5f5f5"
-					activeColor="#3c9cff" mode="subsection"></up-subsection>
+					activeColor="#3c9cff" mode="subsection" fontSize="10"></up-subsection>
 			</view>
 		</view>
 
@@ -33,10 +33,10 @@
 
 		<view class="common_box">
 			<Title title="COMMON FUNC" />
-			<view class="title-padding button-container">
-				<view class="button-group">
-					<button type="default" size="mini">INPUT</button>
-					<button type="default" size="mini">MUTE</button>
+			<view class="btn_container">
+				<view class="btn_group">
+					<button class="btn blue">{{ $translate("INPUT") }}</button>
+					<button class="btn green">{{ $translate("MUTE") }}</button>
 				</view>
 			</view>
 		</view>
@@ -54,7 +54,8 @@
 		reactive,
 		watch,
 		markRaw,
-		provide
+		provide,
+		getCurrentInstance
 	} from 'vue'
 	import {
 		onLoad
@@ -65,6 +66,9 @@
 	import {
 		storeToRefs
 	} from 'pinia'
+
+	const instance = getCurrentInstance()
+	const $translate = instance.appContext.config.globalProperties.$translate;
 
 	const components = reactive([
 		markRaw(PlayerVue),
@@ -81,19 +85,19 @@
 	const tabStore = useTabStore()
 	const activeIndex = ref(0)
 	const tabList = [{
-		name: '古典',
+		name: $translate("CLASSICAL"),
 		num: 0,
 	}, {
-		name: '爵士',
+		name: $translate("JAZZ"),
 		num: 1,
 	}, {
-		name: '流行',
+		name: $translate("POP"),
 		num: 2,
 	}, {
-		name: '摇滚',
+		name: $translate("ROCK"),
 		num: 3,
 	}, {
-		name: '人声',
+		name: $translate("VOCALS"),
 		num: 4,
 	}];
 	// 切换Tab回调
@@ -104,80 +108,52 @@
 </script>
 
 <style lang="scss" scoped>
-	.box {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		width: 100%;
+	@import "@/static/scss/controll.scss";
+
+	.padding_tb {
+		padding: 20rpx 0;
+	}
+
+	// .eq_padding {
+	// 	padding-top: 50rpx;
+	// }
+
+	.common_box {
+		margin-top: 20rpx;
+		padding: 20rpx 0 0 20rpx;
+		border-radius: 30rpx;
+		background-color: #fff;
 		box-sizing: border-box;
 
-		.padding_tb {
-			padding: 20rpx 0;
-		}
-
-		.number_box {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-
-			.word {
-				padding-top: 20rpx;
-				border-radius: 30rpx;
-				font-size: 24rpx;
-				text-align: center;
-			}
-		}
-
-		.eq_box {
-			padding: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-			flex: 1;
-		}
-
-		.play_box {
-			margin-top: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-		}
-
-		.word {
-			display: inline-block;
-			padding-right: 30rpx;
-			text-align: center;
-			font-size: 24rpx;
-			color: #9c9c9c;
-		}
-
-		.eq_padding {
-			padding-top: 50rpx;
-		}
-
-		.common_box {
-			margin-top: 20rpx;
-			padding: 20rpx 0 0 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-			box-sizing: border-box;
-		}
-
-		.title-padding {
-			padding-top: 20rpx;
-			padding-bottom: 20rpx;
-		}
-
-		.button-container {
+		.btn_container {
 			display: flex;
 			justify-content: center;
-			/* 水平居中 */
 			align-items: center;
-			/* 垂直居中 */
-		}
+			padding-top: 20rpx;
+			padding-bottom: 20rpx;
 
-		.button-group {
-			display: flex;
-			gap: 20px;
-			/* 按钮间距 */
+			.btn_group {
+				display: flex;
+				gap: 20px;
+				/* 按钮间距 */
+			}
+
+			.btn {
+				font-size: 24rpx;
+				width: 180rpx;
+			}
+
+			.blue {
+				border: 1rpx solid #3c9cff;
+				color: #3c9cff;
+				background: none;
+			}
+
+			.green {
+				background: none;
+				border: 1rpx solid #5ac725;
+				color: #5ac725;
+			}
 		}
 	}
 </style>

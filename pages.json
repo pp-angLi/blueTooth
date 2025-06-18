@@ -10,16 +10,21 @@
 		"path": "pages/index",
 		"style": {
 			"navigationBarTitleText": "", // 全局隐藏标题
-			"navigationBarBackgroundColor": "#FFFFFF"
+			"navigationBarBackgroundColor": "#FFFFFF",
+			"app-plus": {
+				"bounce": "none",
+			}
 		}
 	}],
 	"globalStyle": {
+		"navigationStyle": "custom",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "蓝牙音响",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {
-			"background": "#efeff4"
+			"background": "#efeff4",
+			"bounce": "none",
 		}
 	}
 }

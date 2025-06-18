@@ -1,5 +1,5 @@
 <template>
-	<view class="box" ref="musicControll">
+	<view class="ctrol_box" ref="musicControll">
 		<EffectChart class="eq_box" />
 
 		<PlayerVue class="play_box" :showButton="false" sliderId="sliderIdE" />
@@ -312,41 +312,5 @@
 </script>
 
 <style lang="scss" scoped>
-	.box {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		width: 100%;
-		box-sizing: border-box;
-
-		.padding_tb {
-			padding: 20rpx 0;
-		}
-
-		.number_box {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-
-			.word {
-				padding-top: 20rpx;
-				border-radius: 30rpx;
-				font-size: 24rpx;
-				text-align: center;
-			}
-		}
-
-		.eq_box {
-			padding: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-			flex: 1;
-		}
-
-		.play_box {
-			margin-top: 20rpx;
-			border-radius: 30rpx;
-			background-color: #fff;
-		}
-	}
+	@import "@/static/scss/controll.scss";
 </style>

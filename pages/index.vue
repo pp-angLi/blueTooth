@@ -65,16 +65,20 @@
 	]);
 
 	// Tab配置项
-	const tabList = reactive([{
-		name: $translate('MUSIC CTRL'),
-		component: MusicControll
-	}, {
-		name: $translate('MIC CTRL'),
-		component: MicControll
-	}, {
-		name: $translate('EFFECT CTRL'),
-		component: EffectControll
-	}]);
+
+	const setTabList = () => {
+		return reactive([{
+			name: $translate('MUSIC CTRL'),
+			component: MusicControll
+		}, {
+			name: $translate('MIC CTRL'),
+			component: MicControll
+		}, {
+			name: $translate('EFFECT CTRL'),
+			component: EffectControll
+		}]);
+	}
+	let tabList = setTabList()
 
 	const activeIndex = ref(0);
 
@@ -107,6 +111,7 @@
 		}
 		loading.value = true
 		setTimeout(() => {
+			tabList = setTabList()
 			loading.value = false
 		}, 333)
 	}

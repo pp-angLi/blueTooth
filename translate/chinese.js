@@ -22,9 +22,11 @@ export default {
 	
 	"PRIORITY": "闪避",
 	"FBX": "移频防啸叫",
-	"LOW": "低",
-	"MID": "中",
-	"HIGH": "高",
+	
+	"BASS": "低音",
+	"MIDDLE": "中音",
+	"TREBLE": "高音",
+	
 	"MIC": "麦克风",
 	
 	"EFFECT": "EFFECT",

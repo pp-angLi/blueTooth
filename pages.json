@@ -9,10 +9,10 @@
 	"pages": [{
 		"path": "pages/index",
 		"style": {
-			"navigationBarTitleText": "", // 全局隐藏标题
+			"navigationBarTitleText": "", 
 			"navigationBarBackgroundColor": "#FFFFFF",
 			"app-plus": {
-				"bounce": "none",
+				"bounce": "none"
 			}
 		}
 	}],
@@ -24,7 +24,7 @@
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {
 			"background": "#efeff4",
-			"bounce": "none",
+			"bounce": "none"
 		}
 	}
 }

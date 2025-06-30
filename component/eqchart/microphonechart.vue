@@ -5,10 +5,10 @@
 		</view>
 		<view class="slider_box">
 			<view class="slider_list" v-for="(slider, i) in sliderList" :key="slider.name">
-				<view class="word margin_b">{{ slider.value }}</view>
+				<view class="word margin_b">{{ slider.value - dBF }}</view>
 				<view class="slider">
 					<SliderVue :disabled="slider.disabled" :value="slider.value" :sliderId="slider.sliderId"
-						:onSliderChange="onSliderChange" :switchOpen="switchOpen" />
+						:max="dBF * 2" :min="-dBF" :onSliderChange="onSliderChange" :switchOpen="switchOpen" />
 				</view>
 				<view class="word">{{ slider.name }}</view>
 			</view>
@@ -28,9 +28,10 @@
 		watch,
 		getCurrentInstance
 	} from 'vue';
-	
+
 	const instance = getCurrentInstance()
 	const $translate = instance.appContext.config.globalProperties.$translate;
+	const dBF = 10
 
 	const props = defineProps({
 		switchOpen: {
@@ -51,17 +52,17 @@
 	}
 
 	const sliderList = reactive([{
-		name: $translate('LOW'),
+		name: $translate('BASS'),
 		value: 0,
-		sliderId: "low",
+		sliderId: "bass",
 	}, {
-		name: $translate('MID'),
+		name: $translate('MIDDLE'),
 		value: 0,
-		sliderId: "mid",
+		sliderId: "middle",
 	}, {
-		name: $translate('HIGH'),
+		name: $translate('TREBLE'),
 		value: 0,
-		sliderId: "high",
+		sliderId: "treble",
 	}, ])
 </script>
 

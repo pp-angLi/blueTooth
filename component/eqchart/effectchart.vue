@@ -11,7 +11,7 @@
 				<view class="word margin_b">{{ slider.value }}</view>
 				<view class="slider">
 					<SliderVue :disabled="slider.disabled" :value="slider.value" :sliderId="slider.sliderId"
-						:onSliderChange="onSliderChange" />
+						:onSliderChange="onSliderChange" :max="dBF" />
 				</view>
 				<view class="word">{{ slider.name }}</view>
 			</view>
@@ -36,6 +36,7 @@
 
 	const instance = getCurrentInstance()
 	const $translate = instance.appContext.config.globalProperties.$translate;
+	const dBF = 30
 
 	const components = reactive([
 		markRaw(SliderVue),

@@ -3,7 +3,7 @@ export default {
 	"MIC CTRL": "MIC CTRL",
 	"EFFECT CTRL": "EFFECT CTRL",
 	"COMMON FUNC": "COMMON FUNC",
-	"REVERB VOL": "REVERB VOL",
+	"REVERB VOL": "REV VOL",
 	"ECHO VOL": "ECHO VOL",
 	"REVERB TIME": "REVERB TIME",
 	
@@ -24,9 +24,11 @@ export default {
 	
 	"PRIORITY": "PRIORITY",
 	"FBX": "FBX",
-	"LOW": "LOW",
-	"MID": "MID",
-	"HIGH": "HIGH",
+	
+	"BASS": "BASS",
+	"MIDDLE": "MIDDLE",
+	"TREBLE": "TREBLE",
+	
 	"MIC": "MIC",
 	
 	"EFFECT": "EFFECT",

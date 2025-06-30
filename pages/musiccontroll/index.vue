@@ -3,8 +3,12 @@
 		<view class="eq_model">
 			<Title title="EQ MODE" />
 			<view class="padding_tb">
+				<view class="cover" @tap.stop="() => {}"></view>
+				<!-- 				<up-subsection :list="tabList" :current="activeIndex" @change="handleTabChange" bgColor="#f5f5f5"
+					activeColor="#3c9cff" mode="subsection" fontSize="10"></up-subsection> -->
 				<up-subsection :list="tabList" :current="activeIndex" @change="handleTabChange" bgColor="#f5f5f5"
-					activeColor="#3c9cff" mode="subsection" fontSize="10"></up-subsection>
+					activeColor="#eeeeef" mode="subsection" fontSize="10">
+				</up-subsection>
 			</view>
 		</view>
 
@@ -111,7 +115,17 @@
 	@import "@/static/scss/controll.scss";
 
 	.padding_tb {
+		position: relative;
 		padding: 20rpx 0;
+
+		.cover {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0%;
+			left: 0%;
+			z-index: 99;
+		}
 	}
 
 	// .eq_padding {

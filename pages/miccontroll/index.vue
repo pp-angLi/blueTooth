@@ -3,7 +3,7 @@
 		<view class="eq_model">
 			<Title :title="$translate('PRIORITY')">
 				<template #switch>
-					<up-switch v-model="switchOpen" activeColor="#5ac725" inactiveColor="#f56c6c" size="15">
+					<up-switch v-model="switchOpen" activeColor="#5ac725" inactiveColor="#f56c6c" size="15" :disabled="true">
 					</up-switch>
 				</template>
 			</Title>

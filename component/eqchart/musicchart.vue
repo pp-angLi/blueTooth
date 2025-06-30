@@ -2,7 +2,7 @@
 	<view class="charts">
 		<Title title="EQUALIZER" />
 		<view class="word_box">
-			<text class="word">12dB</text>
+			<text class="word">{{ dBF }}dB</text>
 		</view>
 		<view class="slider_box">
 			<view class="slider_list" v-for="(slider, i) in sliderList" :key="slider.name">
@@ -10,14 +10,14 @@
 					slider.value + slider.min
 				}}</view>
 				<view class="slider">
-					<SliderVue :disabled="slider.disabled" :value="slider.value" :max="24" :min="slider.min"
+					<SliderVue :disabled="slider.disabled" :value="slider.value" :max="dBF * 2" :min="slider.min"
 						:sliderId="slider.name" :onSliderChange="onSliderChange" />
 				</view>
 				<view class="word">{{ slider.name }}</view>
 			</view>
 		</view>
 		<view class="word_box">
-			<text class="word">-12dB</text>
+			<text class="word">-{{ dBF }}dB</text>
 		</view>
 	</view>
 </template>
@@ -33,6 +33,8 @@
 		ref,
 		getCurrentInstance
 	} from 'vue';
+	
+	const dBF = 10
 
 	const components = reactive([
 		markRaw(SliderVue),
@@ -51,15 +53,15 @@
 	const sliderList = reactive([{
 		name: $translate("BASS"),
 		value: 0,
-		min: -12,
+		min: -dBF,
 	}, {
 		name: $translate("MID"),
 		value: 0,
-		min: -12,
+		min: -dBF,
 	}, {
 		name: $translate("TREB"),
 		value: 0,
-		min: -12,
+		min: -dBF,
 	}])
 </script>
 

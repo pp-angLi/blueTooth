@@ -5,10 +5,10 @@
 		</view>
 		<view class="slider_box">
 			<view class="slider_list" v-for="(slider, i) in sliderList" :key="slider.name">
-				<view class="word margin_b">{{ slider.value - dBF }}</view>
+				<view class="word margin_b">{{ 0 - slider.value }}</view>
 				<view class="slider">
-					<SliderVue :disabled="slider.disabled" :value="slider.value" :sliderId="slider.sliderId"
-						:max="dBF * 2" :min="-dBF" :onSliderChange="onSliderChange" :switchOpen="switchOpen" />
+					<pp-slider :vertical="true" :value="slider.value" :min="-dBF" :max="dBF" @changing="slider.func"
+						backgroundColor="#3c9cff" activeColor="#9c9c9c" blockColor="#3c9cff" />
 				</view>
 				<view class="word">{{ slider.name }}</view>
 			</view>
@@ -18,7 +18,6 @@
 
 <script setup name="MicrophoneChart">
 	import Title from '@/component/title/index.vue'
-	import SliderVue from '@/component/slider/index.vue'
 	import {
 		nextTick,
 		onMounted,
@@ -41,7 +40,6 @@
 	})
 
 	const components = reactive([
-		markRaw(SliderVue),
 		markRaw(Title),
 	]);
 
@@ -55,14 +53,23 @@
 		name: $translate('BASS'),
 		value: 0,
 		sliderId: "bass",
+		func: (val) => {
+			onSliderChange(val, "bass")
+		}
 	}, {
 		name: $translate('MIDDLE'),
 		value: 0,
 		sliderId: "middle",
+		func: (val) => {
+			onSliderChange(val, "middle")
+		}
 	}, {
 		name: $translate('TREBLE'),
 		value: 0,
 		sliderId: "treble",
+		func: (val) => {
+			onSliderChange(val, "treble")
+		}
 	}, ])
 </script>
 

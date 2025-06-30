@@ -7,11 +7,11 @@
 		<view class="slider_box">
 			<view class="slider_list" v-for="(slider, i) in sliderList" :key="slider.name">
 				<view class="word margin_b">{{
-					slider.value + slider.min
+					0 - slider.value
 				}}</view>
 				<view class="slider">
-					<SliderVue :disabled="slider.disabled" :value="slider.value" :max="dBF * 2" :min="slider.min"
-						:sliderId="slider.name" :onSliderChange="onSliderChange" />
+					<pp-slider :vertical="true" :value="slider.value" :min="-dBF" :max="dBF" @changing="slider.func"
+						backgroundColor="#3c9cff" activeColor="#9c9c9c" blockColor="#3c9cff" />
 				</view>
 				<view class="word">{{ slider.name }}</view>
 			</view>
@@ -24,7 +24,6 @@
 
 <script setup name="MusicChart">
 	import Title from '@/component/title/index.vue'
-	import SliderVue from '@/component/slider/index.vue'
 	import {
 		nextTick,
 		onMounted,
@@ -33,17 +32,17 @@
 		ref,
 		getCurrentInstance
 	} from 'vue';
-	
+
 	const dBF = 10
 
 	const components = reactive([
-		markRaw(SliderVue),
 		markRaw(Title),
 	]);
 
 	// sendMessage写在这里
 	const onSliderChange = (val, sliderId) => {
-		const i = sliderList.findIndex(slider => slider.name === sliderId)
+		console.log(val)
+		const i = sliderList.findIndex(slider => slider.sliderId === sliderId)
 		sliderList[i].value = val
 	}
 
@@ -52,16 +51,28 @@
 
 	const sliderList = reactive([{
 		name: $translate("BASS"),
+		sliderId: "bass",
 		value: 0,
 		min: -dBF,
+		func: (val) => {
+			onSliderChange(val, "bass")
+		}
 	}, {
-		name: $translate("MID"),
+		name: $translate("MIDDLE"),
+		sliderId: "middle",
 		value: 0,
 		min: -dBF,
+		func: (val) => {
+			onSliderChange(val, "middle")
+		}
 	}, {
-		name: $translate("TREB"),
+		name: $translate("TREBLE"),
+		sliderId: "treble",
 		value: 0,
 		min: -dBF,
+		func: (val) => {
+			onSliderChange(val, "treble")
+		}
 	}])
 </script>
 

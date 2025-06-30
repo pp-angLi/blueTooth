@@ -4,14 +4,15 @@
 		<view class="slider_box">
 			<text class="word" v-if="word">{{ $translate(word) }} </text>
 			<view class="button" v-if="!showButton && showIcon">
-				<up-icon @tap="voiceHandler(-1)" v-show="voice > 50" :name="volume2Png" color="#9c9c9c"
+				<up-icon @tap="voiceHandler(-1)" v-show="voice > 15" :name="volume2Png" color="#9c9c9c"
 					size="20"></up-icon>
-				<up-icon @tap="voiceHandler(-1)" v-show="voice > 0 && voice <= 50" :name="volume1Png" color="#9c9c9c"
+				<up-icon @tap="voiceHandler(-1)" v-show="voice > 0 && voice <= 15" :name="volume1Png" color="#9c9c9c"
 					size="20"></up-icon>
 				<up-icon @tap="voiceHandler(101)" v-show="voice <= 0" :name="volumeXPng" color="#9c9c9c"
 					size="20"></up-icon>
 			</view>
-			<SliderrowVue class="slider" :value="voice" :sliderId="sliderId" />
+			<up-slider class="slider" :min="0" :max="30" v-model="voice" activeColor="#3c9cff" inactiveColor="#c0c4cc"
+				blockSize="24" blockColor="#3c9cff"></up-slider>
 			<text class="word vioce">{{ voice }} </text>
 		</view>
 		<view class="bottom" v-if="showButton">
@@ -29,9 +30,9 @@
 				<up-icon :name="rewindRightFillPng" color="#9c9c9c" size="28"></up-icon>
 			</view>
 			<view class="button">
-				<up-icon @tap="voiceHandler(-1)" v-show="voice > 50" :name="volume2Png" color="#9c9c9c"
+				<up-icon @tap="voiceHandler(-1)" v-show="voice > 15" :name="volume2Png" color="#9c9c9c"
 					size="20"></up-icon>
-				<up-icon @tap="voiceHandler(-1)" v-show="voice > 0 && voice <= 50" :name="volume1Png" color="#9c9c9c"
+				<up-icon @tap="voiceHandler(-1)" v-show="voice > 0 && voice <= 15" :name="volume1Png" color="#9c9c9c"
 					size="20"></up-icon>
 				<up-icon @tap="voiceHandler(101)" v-show="voice <= 0" :name="volumeXPng" color="#9c9c9c"
 					size="20"></up-icon>
@@ -67,16 +68,11 @@
 	import volumeXPng from '@/static/img/volume-x.png'
 	import volume2Png from '@/static/img/volume-2.png'
 	import volume1Png from '@/static/img/volume-1.png'
-	
-	import SliderrowVue from '@/component/slider/sliderrow.vue'
+
 	import Title from '@/component/title/index.vue'
-	
+
 	const instance = getCurrentInstance()
 	const $translate = instance.appContext.config.globalProperties.$translate;
-	
-	const components = reactive([
-		markRaw(SliderrowVue)
-	]);
 
 	const props = defineProps({
 		showButton: {
@@ -95,7 +91,7 @@
 			type: String,
 			default: "sliderRowId"
 		},
-		titlename:{
+		titlename: {
 			type: String,
 			default: ""
 		}
@@ -184,7 +180,7 @@
 		width: 100%;
 		padding: 0 20rpx;
 		box-sizing: border-box;
-		
+
 		.title {
 			padding: 20rpx 0;
 		}
@@ -193,25 +189,19 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			padding: 20rpx 0;
+			padding: 0rpx 10rpx;
 			box-sizing: border-box;
 
 			.word {
 				display: inline-block;
-				padding-right: 30rpx;
 				text-align: center;
 				font-size: 24rpx;
 				color: #9c9c9c;
 			}
-			
+
 			.vioce {
-				padding: 0 0 0 30rpx;
 				color: #3c9cff;
 				text-shadow: 0 0 3rpx #9c9c9c;
-			}
-
-			.button {
-				padding-right: 30rpx;
 			}
 
 			.slider {

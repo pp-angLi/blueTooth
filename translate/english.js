@@ -2,11 +2,13 @@ export default {
 	"MUSIC CTRL": "MUSIC CTRL",
 	"MIC CTRL": "MIC CTRL",
 	"EFFECT CTRL": "EFFECT CTRL",
+	"SUB CTRL": "SUB CTRL",
+
 	"COMMON FUNC": "COMMON FUNC",
 	"REVERB VOL": "REV VOL",
 	"ECHO VOL": "ECHO VOL",
 	"REVERB TIME": "REVERB TIME",
-	
+
 	"EQ MODE": "EQ MODE",
 	"CLASSICAL": "CLASSICAL",
 	"JAZZ": "JAZZ",
@@ -21,17 +23,24 @@ export default {
 	"VOL": "VOL",
 	"INPUT": "INPUT",
 	"MUTE": "MUTE",
-	
+
 	"PRIORITY": "PRIORITY",
 	"FBX": "FBX",
-	
+
 	"BASS": "BASS",
 	"MIDDLE": "MIDDLE",
 	"TREBLE": "TREBLE",
-	
+
 	"MIC": "MIC",
-	
+
 	"EFFECT": "EFFECT",
 	"REPEAT": "REPEAT",
 	"DELAY": "DELAY",
+
+	"E-LPF": "E-LPF",
+	"REV TIME": "REV TIME",
+	"REV-LPF": "REV-LPF",
+
+	"SUB": "SUB",
+	"FEQ": "FEQ",
 }

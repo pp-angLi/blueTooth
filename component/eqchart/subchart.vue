@@ -2,16 +2,16 @@
 	<view class="charts">
 		<!-- <CirsliderVue /> -->
 		<view class="charts_top">
-			<Title title="EFFECT" />
+			<Title title="SUB" />
 		</view>
 
 		<view class="slider_row_box" v-for="slider in sliderRowList" :key="slider.sliderId">
 			<text class="word word1">{{ slider.name }} </text>
-			<up-slider class="slider" :min="0" :max="30" v-model="slider.value" activeColor="#3c9cff" inactiveColor="#c0c4cc"
-				blockSize="18" blockColor="#3c9cff"></up-slider>
+			<up-slider class="slider" :min="0" :max="30" v-model="slider.value" activeColor="#3c9cff"
+				inactiveColor="#c0c4cc" blockSize="18" blockColor="#3c9cff"></up-slider>
 			<text class="word vioce">{{ slider.value }} </text>
 		</view>
-		<view class="slider_box">
+		<!-- 		<view class="slider_box">
 			<view class="slider_list" v-for="(slider, i) in sliderList" :key="slider.name">
 				<view class="word margin_b">{{ dBF - slider.value }}</view>
 				<view class="slider">
@@ -20,11 +20,11 @@
 				</view>
 				<view class="word">{{ slider.name }}</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
-<script setup name="EffectChart">
+<script setup name="SubChart">
 	import Title from '@/component/title/index.vue'
 	// import CirsliderVue from "@/component/slider/cirslider.vue"
 	import {
@@ -52,46 +52,26 @@
 		sliderList[i].value = val
 	}
 
-	const sliderList = reactive([{
-		name: $translate("BASS"),
-		value: 0,
-		sliderId: "bass",
-		func: (val) => {
-			onSliderChange(val, "bass")
-		}
-	}, {
-		name: $translate("TREBLE"),
-		value: 0,
-		sliderId: "treble",
-		func: (val) => {
-			onSliderChange(val, "treble")
-		}
-	}])
+	// const sliderList = reactive([{
+	// 	name: $translate("BASS"),
+	// 	value: 0,
+	// 	sliderId: "bass",
+	// 	func: (val) => {
+	// 		onSliderChange(val, "bass")
+	// 	}
+	// }, {
+	// 	name: $translate("TREBLE"),
+	// 	value: 0,
+	// 	sliderId: "treble",
+	// 	func: (val) => {
+	// 		onSliderChange(val, "treble")
+	// 	}
+	// }])
 
 	const sliderRowList = reactive([{
-		name: $translate("DELAY"),
-		sliderId: "delay",
+		name: $translate("FEQ"),
+		sliderId: "feq",
 		value: 0,
-	}, {
-		name: $translate("REPEAT"),
-		value: 0,
-		sliderId: "repeat",
-	}, {
-		name: $translate("E-LPF"),
-		value: 0,
-		sliderId: "e-lpf",
-	}, {
-		name: $translate("REV TIME"),
-		value: 0,
-		sliderId: "revtime",
-	}, {
-		name: $translate("REV VOL"),
-		value: 0,
-		sliderId: "revvol",
-	}, {
-		name: $translate("REV-LPF"),
-		value: 0,
-		sliderId: "revlpf",
 	}])
 </script>
 
@@ -104,9 +84,8 @@
 		align-items: center;
 		padding: 0rpx 10rpx;
 		box-sizing: border-box;
-		
+
 		.word1 {
-			width: 150rpx;
 			text-align: right;
 		}
 

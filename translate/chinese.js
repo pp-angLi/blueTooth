@@ -2,6 +2,7 @@ export default {
 	"MUSIC CTRL": "音乐控制台",
 	"MIC CTRL": "麦克风控制台",
 	"EFFECT CTRL": "Effect控制台",
+	"SUB CTRL": "SUB控制台",
 	
 	"EQ MODE": "EQ模块",
 	"CLASSICAL": "古典",
@@ -11,8 +12,6 @@ export default {
 	"VOCALS": "人声",
 	"EQUALIZER": "均衡器",
 	"BASS": "BASS",
-	"MID": "MID",
-	"TREB": "TREB",
 	"MUSIC": "音乐",
 	"VOL": "音量",
 	"COMMON FUNC": "",
@@ -35,4 +34,11 @@ export default {
 	"REVERB TIME": "REVERB TIME",
 	"REPEAT": "REPEAT",
 	"DELAY": "DELAY",
+	
+	"E-LPF": "E-LPF",
+	"REV TIME": "REV TIME",
+	"REV-LPF": "REV-LPF",
+	
+	"SUB": "SUB",
+	"FEQ": "FEQ",
 }

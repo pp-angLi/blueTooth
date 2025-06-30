@@ -23,6 +23,9 @@
 			<view class="component" v-if="activeIndex === 2">
 				<EffectControll />
 			</view>
+			<view class="component" v-if="activeIndex === 3">
+				<SubControll />
+			</view>
 		</view>
 		<!-- <BlueToothVue v-show="showBlueT" /> -->
 	</view>
@@ -41,6 +44,7 @@
 	import MusicControll from '@/pages/musiccontroll/index.vue'
 	import MicControll from '@/pages/miccontroll/index.vue'
 	import EffectControll from '@/pages/effectcontroll/index.vue'
+	import SubControll from '@/pages/subcontroll/index.vue'
 
 	import btClosePng from '@/static/img/bluetoothclose.png'
 	import btOpenPng from '@/static/img/bluetoothopen.png'
@@ -62,6 +66,7 @@
 		markRaw(MusicControll), // ✅ 阻止深度代理[3,7](@ref)
 		markRaw(MicControll), // ✅ 阻止深度代理[3,7](@ref)
 		markRaw(EffectControll), // ✅ 阻止深度代理[3,7](@ref)
+		markRaw(SubControll), // ✅ 阻止深度代理[3,7](@ref)
 	]);
 
 	// Tab配置项
@@ -76,6 +81,9 @@
 		}, {
 			name: $translate('EFFECT CTRL'),
 			component: EffectControll
+		}, {
+			name: $translate('SUB CTRL'),
+			component: SubControll
 		}]);
 	}
 	let tabList = setTabList()
@@ -156,7 +164,6 @@
 				top: 0%;
 				left: 0%;
 				width: 100%;
-				height: 100%;
 				padding: 20rpx;
 				box-sizing: border-box;
 			}
